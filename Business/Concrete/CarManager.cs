@@ -14,6 +14,17 @@ namespace Business.Concrete
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
+            
+        }
+
+        public void Add(Car car)
+        {
+            if (car.Description.Length < 2) { Console.WriteLine(" Araba ismi minimum 2 karakter olmalıdır! "); }
+            if (car.DailyPrice<=0)
+            {
+                Console.WriteLine("Araba günlük fiyatı 0'dan büyük olmalıdır!");
+            }
+            _carDal.Add(car);
         }
 
         public List<Car> GetAll()
@@ -21,6 +32,19 @@ namespace Business.Concrete
             //iş kodları
             //Yetkisi var mı?
             return _carDal.GetAll();
+           
         }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetAll(c => c.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
+        }
+
+        
     }
 }
