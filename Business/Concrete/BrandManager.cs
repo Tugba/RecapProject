@@ -10,6 +10,7 @@ namespace Business.Concrete
    public class BrandManager :IBrandService
     {
         IBrandDal _brandDal;
+
         public BrandManager(IBrandDal brandDal)
         {
             _brandDal = brandDal;
@@ -26,7 +27,14 @@ namespace Business.Concrete
 
         public List<Brand> GetAll()
         {
-            throw new NotImplementedException();
+            //iş kodları
+            return _brandDal.GetAll();
+        }
+
+        public Brand GetById(int brandId)
+        {
+            return _brandDal.Get(b=>b.BrandId==brandId);
+
         }
     }
 }
