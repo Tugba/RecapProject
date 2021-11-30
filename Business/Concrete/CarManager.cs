@@ -28,6 +28,12 @@ namespace Business.Concrete
             _carDal.Add(car);
         }
 
+        public void Delete(Car car)
+        {
+            //iş kodları
+            _carDal.Delete(car);
+        }
+
         public List<Car> GetAll()
         {
             //iş kodları
@@ -51,6 +57,9 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.ColorId == id);
         }
 
-        
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
     }
 }
