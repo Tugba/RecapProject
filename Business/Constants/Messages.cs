@@ -8,12 +8,12 @@ namespace Business.Constants
     {
         public static string MaintenanceTime = "Sistem bakımda";
 
-        public static string CarAdded = "Araba eklendi";
-        public static string CarUpdated = "Araba güncellendi";
-        public static string CarDeleted = "Araba silindi";
-        public static string CarNameInvalid = "Araba ismi geçersiz";
-        public static string CarDailyPriceInvalid = "Araba günlük kiralama bedeli geçersiz";
-        public static string CarListed = "Arabalar listelendi";
+        public static string CarAdded = "Araç eklendi";
+        public static string CarUpdated = "Araç güncellendi";
+        public static string CarDeleted = "Araç silindi";
+        public static string CarNameInvalid = "Araç ismi geçersiz";
+        public static string CarDailyPriceInvalid = "Araç günlük kiralama bedeli geçersiz";
+        public static string CarListed = "Araçlar listelendi";
 
         public static string BrandAdded = "Marka eklendi";
         public static string BrandDeleted = "Marka silindi";
@@ -41,6 +41,11 @@ namespace Business.Constants
         public static string RentalInvalid = "Kiralama geçersiz";
 
 
+        public static string CarImageAdded = "Araç fotoğrafı eklendi";
+        public static string CarImageUpdated = "Araç fotoğrafı güncellendi";
+        public static string CarImageDeleted = "Araç fotoğrafı silindi";
+        public static string CarImageCountOfCarError = "Aracın fotoğrafları maksimum sayıdadır";
+        public static string CarImagesListed = "Araç fotoğrafları listelendi";
 
     }
 }
