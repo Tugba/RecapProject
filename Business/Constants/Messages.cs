@@ -28,12 +28,12 @@ namespace Business.Constants
         public static string CustomerAdded = "Müşteri eklendi";
         public static string CustomerUpdated = "Müşteri güncellendi";
         public static string CustomerDeleted = "Müşteri silindi";
-       
+
 
         public static string UserAdded = "Kullanıcı eklendi";
         public static string UserUpdated = "Kullanıcı güncellendi";
         public static string UserDeleted = "Kullanıcı silindi";
-      
+
 
         public static string RentalAdded = "Kiralama bilgisi eklendi";
         public static string RentalUpdated = "Kiralama bilgisi güncellendi";
@@ -46,6 +46,5 @@ namespace Business.Constants
         public static string CarImageDeleted = "Araç fotoğrafı silindi";
         public static string CarImageCountOfCarError = "Aracın fotoğrafları maksimum sayıdadır";
         public static string CarImagesListed = "Araç fotoğrafları listelendi";
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Utilities.Results;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,12 +9,12 @@ namespace Core.Utilities.Helpers
 {
   public  class FileHelper
     {
-        static string directory = Directory.GetCurrentDirectory() + @"\wwwroot\"; //@ile özel karakterleri yazdırırız.
+        static string directory = Directory.GetCurrentDirectory() + @"\wwwroot\"; 
         static string path = @"Images\";
 
-        public static string Add(IFormFile file) //FormFile ile dosya gönderebiliyoruz. http reguest ile gelen bir isteğe karşılık gelir.
+        public static string Add(IFormFile file) 
         {
-            string extension = Path.GetExtension(file.FileName); //dosyanın klasörünün uzantısını aldık
+            string extension = Path.GetExtension(file.FileName); 
             string newFileName = Guid.NewGuid().ToString("N") + extension;
 
             if (!Directory.Exists(directory + path))
@@ -46,6 +47,6 @@ namespace Core.Utilities.Helpers
 
 
         }
-    
+    }
 }
-}
+

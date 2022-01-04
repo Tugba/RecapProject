@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers;
 using Core.Utilities.Results;
@@ -11,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+
 
 namespace Business.Concrete
 {
@@ -26,8 +29,8 @@ namespace Business.Concrete
         static string path = @"Images\";
         public IResult Add(IFormFile file, CarImage carImage)
         {
-            var result = BusinessRules.Run(CheckIfCarImageCountOfCarCorrect(carImage.CarId),CheckCarImageExtensionValid(file));
-            if (result!=null)
+            var result = BusinessRules.Run(CheckIfCarImageCountOfCarCorrect(carImage.CarId), CheckCarImageExtensionValid(file));
+            if (result != null)
             {
                 return result;
             }
@@ -37,8 +40,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarImageAdded);
         }
 
-        
-        public IResult AddCollective(IFormFile[] files,CarImage carImage)
+
+        public IResult AddCollective(IFormFile[] files, CarImage carImage)
         {
             foreach (var file in files)
             {
@@ -57,7 +60,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarImage>> GetAll()
         {
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(),Messages.CarImagesListed);
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(), Messages.CarImagesListed);
         }
 
         public IDataResult<CarImage> GetById(int carImageId)
@@ -68,7 +71,7 @@ namespace Business.Concrete
         public IDataResult<List<CarImage>> GetImagesByCarId(int carId)
         {
             var result = BusinessRules.Run(CheckCarImage(carId));
-            if (result!=null)
+            if (result != null)
             {
                 return new ErrorDataResult<List<CarImage>>(GetDefaultImage(carId).Data);
             }
@@ -85,17 +88,17 @@ namespace Business.Concrete
         private IResult CheckCarImage(int carId)
         {
             var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
-            if (result>0)
+            if (result > 0)
             {
                 return new SuccessResult();
             }
             return new ErrorResult();
         }
 
-        public IResult Update(IFormFile file,CarImage carImage)
+        public IResult Update(IFormFile file, CarImage carImage)
         {
             var result = BusinessRules.Run(CheckCarImageExtensionValid(file));
-            if (result!=null)
+            if (result != null)
             {
                 return result;
             }
@@ -110,7 +113,7 @@ namespace Business.Concrete
 
         private IResult CheckCarImageExtensionValid(IFormFile file)
         {
-           string[] validCarImageFileTypes = { ".JPG", ".JPEG", ".PNG", ".GIF", ".TIFF", ".TIF", ".BMP", ".ICO", ".WEBP" };
+            string[] validCarImageFileTypes = { ".JPG", ".JPEG", ".PNG", ".GIF", ".TIFF", ".TIF", ".BMP", ".ICO", ".WEBP" };
             var result = validCarImageFileTypes.Any(t => t == Path.GetExtension(file.FileName).ToUpper());
             if (!result)
             {

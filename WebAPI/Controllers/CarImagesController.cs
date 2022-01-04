@@ -59,9 +59,9 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("add")]  //*******
-        public IActionResult Add([FromForm] IFormFile[] files,[FromForm] CarImage carImage)
+        public IActionResult Add([FromForm] IFormFile[] files, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.AddCollective(files,carImage);
+            var result = _carImageService.AddCollective(files, carImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -94,4 +94,5 @@ namespace WebAPI.Controllers
         }
 
     }
+
 }
