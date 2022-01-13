@@ -18,7 +18,7 @@ namespace Core.DataAccess.EntityFramework
             {
                 var addedentity = context.Entry(entity);
                 addedentity.State = EntityState.Added;
-                context.SaveChanges();
+               context.SaveChanges();
             }
         }
 

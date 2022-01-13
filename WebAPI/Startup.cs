@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -32,7 +33,7 @@ namespace WebAPI
             //*************
             services.AddControllers();
 
-          
+            //services.AddCors();//********
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,12 +43,13 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+        
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-           app.UseStaticFiles(); //
+           app.UseStaticFiles(); 
            
             app.UseAuthorization();
 
@@ -55,6 +57,8 @@ namespace WebAPI
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }

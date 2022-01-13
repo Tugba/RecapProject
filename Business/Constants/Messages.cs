@@ -45,6 +45,6 @@ namespace Business.Constants
         public static string CarImageUpdated = "Araç fotoğrafı güncellendi";
         public static string CarImageDeleted = "Araç fotoğrafı silindi";
         public static string CarImageCountOfCarError = "Aracın fotoğrafları maksimum sayıdadır";
-        public static string CarImagesListed = "Araç fotoğrafları listelendi";
+       
     }
 }
