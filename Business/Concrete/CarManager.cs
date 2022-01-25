@@ -25,6 +25,7 @@ namespace Business.Concrete
         
         }
 
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
