@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Security.Encryption
+namespace Core.Utilities.Security.Encryption
 {
-   public class SigningCredentialsHelper
+    public class SigningCredentialsHelper
     {
         public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey)
         {
