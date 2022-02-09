@@ -26,12 +26,10 @@ namespace Business.Concrete
         
         }
 
-        [SecuredOperation("product.add,admin")]
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            //business codes
-
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
 
@@ -39,16 +37,14 @@ namespace Business.Concrete
 
         public IResult Delete(Car car)
         {
-            //iş kodları
+           
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [CacheAspect] //key,value
         public IDataResult<List<Car>> GetAll()
         {
-            //iş kodları
-            //Yetkisi var mı?
-
             //if (DateTime.Now.Hour == 19)
             //{
             //    return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);

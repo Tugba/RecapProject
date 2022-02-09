@@ -1,5 +1,8 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependecyResolvers;
+using Core.Extensions;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
@@ -38,7 +41,6 @@ namespace WebAPI
             services.AddControllers();
 
 
-
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -55,7 +57,9 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-
+            services.AddDependencyResolvers(new ICoreModule[] {
+                new CoreModule()
+            });
             // services.AddCors();
         }
 
